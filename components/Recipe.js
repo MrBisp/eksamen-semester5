@@ -35,6 +35,7 @@ const Recipe = (props) => {
                 })}
 
                 <Text>Laver lige en ændring, ik?</Text>
+                <Text> Laver lige en til ændring, ik?</Text>
             </View>
         </View>
     );
