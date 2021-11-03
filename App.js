@@ -9,7 +9,7 @@ import StackNavigator from "./components/StackNavigator";
 import { Ionicons } from '@expo/vector-icons';
 import Recipe from "./components/Recipe";
 import UploadScreen from "./components/UploadScreen";
-import SearchScreen from "./components/UploadScreen";
+import SearchScreen from "./components/SearchScreen";
 
 export default function App() {
   const Tab = createBottomTabNavigator();

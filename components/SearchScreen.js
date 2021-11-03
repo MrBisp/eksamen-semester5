@@ -1,15 +1,28 @@
 import React from 'react';
-import { StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Text, SafeAreaView} from 'react-native';
 import SearchElement from "./SearchElement";
+import FilterElement from "./FilterElement";
 
-const SearchScreen = (props) => {
+const SearchScreen = () => {
     return (
-        <View>
+        <SafeAreaView>
+            <Text>Search Screen</Text>
             <SearchElement/>
-            <Text>Setting screen</Text>
-        </View>
+            <FilterElement/>
+        </SafeAreaView>
     );
 };
 
+/*
+const styles = {
+    searchElement: {
+        width: 239,
+        height: 55,
+        backgroundColor: '#ebebeb',
+        overflow: visible,
+        borderRadius: 16,
+        padding: 20
+    }
+};*/
 
 export default SearchScreen;

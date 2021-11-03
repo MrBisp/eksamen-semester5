@@ -1,24 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, View,Text} from 'react-native';
 import { SearchBar } from 'react-native-elements';
 
 const SearchScreen = () => {
 
-    const state = {
-        search: ""
-    };
+    const [search, setSearch] = useState('');
 
-    const updateSearch = ({search}) => {
-        this.setState({search});
-    };
-
-    const {search} = state.search;
+    /*const updateSearch = ({search}) => {
+        state.search({search});
+    };*/
 
     return (
         <SearchBar
             placeholder="Type Here..."
-            onChangeText={updateSearch}
+            onChangeText={(search) => setSearch(search)}
             value={search}
+            lightTheme={true}
+            placeholderTextColor={'#666666'}
+            inputStyle={{backgroundColor: 'white'}}
+            inputContainerStyle={{backgroundColor: 'white'}}
+            containerStyle={{backgroundColor: 'white', borderWidth: 1, borderRadius: 5, padding: 50}}
         />
     );
 };
