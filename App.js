@@ -8,6 +8,7 @@ import DetailsScreen from './components/DetailsScreen';
 import StackNavigator from "./components/StackNavigator";
 import { Ionicons } from '@expo/vector-icons';
 import Recipe from "./components/Recipe";
+import UploadScreen from "./components/UploadScreen";
 
 export default function App() {
   const Tab = createBottomTabNavigator();
@@ -23,6 +24,10 @@ export default function App() {
                     } else if (route.name === 'Settings') {
                         iconName = focused ? 'ios-list' : 'ios-list';
                     }
+                    else if (route.name === 'Upload opskrift') {
+                        iconName = focused ? 'ios-add' : 'ios-add-outline';
+                    }
+
 
                     // You can return any component that you like here!
                     return <Ionicons name={iconName} size={size} color={color} />;
@@ -31,8 +36,9 @@ export default function App() {
                 tabBarInactiveTintColor: 'gray',
             })}
         >
-          <Tab.Screen name={'Dit feed'} component={StackNavigator} options={{headerShown: false}}/>
-          <Tab.Screen name={'Settings'} component={SettingsScreen} options={{headerShown: false}} />
+            <Tab.Screen name={'Dit feed'} component={StackNavigator} options={{headerShown: false}}/>
+            <Tab.Screen name={'Upload opskrift'} component={UploadScreen} options={{headerShown: false}}/>
+            <Tab.Screen name={'Settings'} component={SettingsScreen} options={{headerShown: false}} />
         </Tab.Navigator>
       </NavigationContainer>
   );
