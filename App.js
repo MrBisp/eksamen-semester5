@@ -39,8 +39,8 @@ export default function App() {
             })}
         >
             <Tab.Screen name={'Dit feed'} component={StackNavigator} options={{headerShown: false}}/>
-            <Tab.Screen name={'Søg'} component={UploadScreen} options={{headerShown: false}}/>
-            <Tab.Screen name={'Upload opskrift'} component={SearchScreen} options={{headerShown: false}}/>
+            <Tab.Screen name={'Søg'} component={SearchScreen} options={{headerShown: false}}/>
+            <Tab.Screen name={'Upload opskrift'} component={UploadScreen} options={{headerShown: false}}/>
             <Tab.Screen name={'Settings'} component={SettingsScreen} options={{headerShown: false}} />
         </Tab.Navigator>
       </NavigationContainer>
