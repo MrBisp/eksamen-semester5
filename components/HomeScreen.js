@@ -98,7 +98,7 @@ const HomeScreen = ({navigation}) => {
 
     return (
         <ScrollView style={styles.container}>
-            <Text style={styles.h1}>Sulten igen, Flemming?</Text>
+            <Text style={styles.h1}>Sulten igen, Frederik?</Text>
             <SafeAreaView>
                 <FlatList
                     data={DATA}
