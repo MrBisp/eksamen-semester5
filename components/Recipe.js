@@ -33,6 +33,8 @@ const Recipe = (props) => {
                         <Text key={step.id}>{step.description}</Text>
                     );
                 })}
+
+                <Text>Laver lige en ændring, ik?</Text>
             </View>
         </View>
     );
