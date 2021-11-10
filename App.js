@@ -10,7 +10,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Recipe from "./components/Recipe";
 import UploadScreen from "./components/UploadScreen";
 import ProfileScreen from "./components/ProfileScreen";
-import SearchScreen from "./components/SearchScreen";
+import SearchScreen from "./components/searchComponents/SearchScreen";
 import firebase from "firebase/compat";
 
 // Recipeat's web app Firebase configuration
@@ -25,6 +25,7 @@ const firebaseConfig = {
 };
 
 //This ensures, that a firebase app initializes, if it is not already running
+
 if(!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }

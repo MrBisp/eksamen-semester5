@@ -1,3 +1,4 @@
+//Created by Tobias Nielsen
 import React from 'react';
 import {Button, StyleSheet} from 'react-native';
 

@@ -1,3 +1,4 @@
+//Created by Tobias Nielsen
 import React, {useState} from 'react';
 import { StyleSheet, View,Text} from 'react-native';
 import { SearchBar } from 'react-native-elements';
@@ -5,10 +6,6 @@ import { SearchBar } from 'react-native-elements';
 const SearchScreen = () => {
 
     const [search, setSearch] = useState('');
-
-    /*const updateSearch = ({search}) => {
-        state.search({search});
-    };*/
 
     return (
         <SearchBar
@@ -26,3 +23,4 @@ const SearchScreen = () => {
 
 {/*HUSK AT SKIFTE NAVN*/}
 export default SearchScreen;
+
