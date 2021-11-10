@@ -1,17 +1,17 @@
 //Created by Tobias Nielsen
 import React, {useState} from 'react';
-import { View, Text} from 'react-native';
+import { View, Text, SafeAreaView} from 'react-native';
 import SearchField from "./SearchField";
 import FilterElement from "./FilterElement";
 
 const SearchProfiles = () => {
 
     return (
-        <View>
+        <SafeAreaView>
             <SearchField/>
             <FilterElement/>
             <Text>Dette er udelukkende profiler der kan søges imellem</Text>
-        </View>
+        </SafeAreaView>
     );
 };
 

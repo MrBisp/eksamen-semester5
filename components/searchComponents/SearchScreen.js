@@ -11,7 +11,6 @@ const SearchScreen = () => {
 
     return(
         <Tab.Navigator
-            swipeEnabled={false}
         >
             <Tab.Screen name="Relevant" component={SearchProfilesAndRecipies}/>
             <Tab.Screen name="Profiler" component={SearchProfiles}/>

@@ -67,12 +67,12 @@ const DATA =
 const SearchProfilesAndRecipies = () => {
 
     return (
-        <View>
+        <SafeAreaView>
             <SearchField/>
             <FilterElement/>
             <Text>Dette er både profiler og opskrifter der kan søges imellem</Text>
             <ImageCard recipeObject={DATA}/>
-        </View>
+        </SafeAreaView>
     );
 };
 
