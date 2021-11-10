@@ -3,8 +3,6 @@ import { StyleSheet, View,Text, Button} from 'react-native';
 import ScreenOne from "./stackComponents/ScreenOne";
 import ScreenTwo from "./stackComponents/ScreenTwo";
 
-
-
 const DetailsScreen = ({navigation}) => {
     const navController = (navigation, route) => {
         navigation.navigate(route);

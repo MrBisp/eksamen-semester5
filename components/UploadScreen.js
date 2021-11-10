@@ -27,9 +27,9 @@ const UploadScreen = (props, route) => {
         recipe: '' ,
         description: '',
         time_Spent: '',
-    }
+    };
 
-    const [newRecipe, setNewRecipe] = useState(initialState)
+    const [newRecipe, setNewRecipe] = useState(initialState);
 
     //This state decides, whether or not the user tries to create a new recipe or edit's an existing recipe. If route.name is Edit Recipe, isEditRecipe is set to true
     const isEditRecipe = route.name === "Edit Recipe";

@@ -4,18 +4,18 @@ import firebase from "firebase/compat";
 
 const ProfileScreen = (navigation) => {
 
-    const [recipes, setRecipes] = useState()
+    const [recipes, setRecipes] = useState();
 
     useEffect(() => {
         if(!recipes)
         {
             firebase.database().ref()
         }
-    })
+    });
     return(
         <TextInput>Min Profil</TextInput>
     )
-}
+};
 
 
 export default ProfileScreen
