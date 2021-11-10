@@ -9,7 +9,27 @@ import StackNavigator from "./components/StackNavigator";
 import { Ionicons } from '@expo/vector-icons';
 import Recipe from "./components/Recipe";
 import UploadScreen from "./components/UploadScreen";
+import ProfileScreen from "./components/ProfileScreen";
 import SearchScreen from "./components/SearchScreen";
+import firebase from "firebase/compat";
+
+// Recipeat's web app Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyDnlHyzX_PSRPieZ2lHt7CujhxUv4mN0lE",
+    authDomain: "recipeat-46ec2.firebaseapp.com",
+    databaseURL: "https://recipeat-46ec2-default-rtdb.firebaseio.com",
+    projectId: "recipeat-46ec2",
+    storageBucket: "recipeat-46ec2.appspot.com",
+    messagingSenderId: "747965262741",
+    appId: "1:747965262741:web:abab1077bbb6e8001e249c"
+};
+
+//This ensures, that a firebase app initializes, if it is not already running
+if(!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
+
+
 
 export default function App() {
   const Tab = createBottomTabNavigator();
@@ -28,8 +48,9 @@ export default function App() {
                         iconName = focused ? 'ios-add' : 'ios-add-outline';
                     } else if (route.name === 'Søg') {
                         iconName = focused ? 'ios-search' : 'ios-search';
+                    } else if(route.name === 'Min Profil') {
+                        iconName = focused ? 'ios-person-circle' : 'ios-person-circle-outline';
                     }
-
 
                     // You can return any component that you like here!
                     return <Ionicons name={iconName} size={size} color={color} />;
@@ -41,6 +62,7 @@ export default function App() {
             <Tab.Screen name={'Dit feed'} component={StackNavigator} options={{headerShown: false}}/>
             <Tab.Screen name={'Søg'} component={SearchScreen} options={{headerShown: false}}/>
             <Tab.Screen name={'Upload opskrift'} component={UploadScreen} options={{headerShown: false}}/>
+            <Tab.Screen name={'Min Profil'} component={ProfileScreen} options={{headerShown: false}}/>
             <Tab.Screen name={'Settings'} component={SettingsScreen} options={{headerShown: false}} />
         </Tab.Navigator>
       </NavigationContainer>
