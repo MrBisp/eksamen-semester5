@@ -1,11 +1,19 @@
 //Created by Tobias Nielsen
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, View,Text} from 'react-native';
 import { SearchBar } from 'react-native-elements';
 
-const SearchScreen = () => {
+const SearchScreen = ({searchChanged}) => {
 
     const [search, setSearch] = useState('');
+
+    //When search is changed, call a function that is passed from the parent
+    useEffect(() => {
+        //For some reason, every other frame, the function does not exists... By putting it in a if statement to check if the function exists, we get expected behaviour
+        if(typeof searchChanged == "function"){
+            searchChanged(search);
+        }
+    }, [search]);
 
     return (
         <SearchBar

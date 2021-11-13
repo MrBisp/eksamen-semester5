@@ -1,6 +1,6 @@
 //Created by Tobias Nielsen
 import React, {useState} from 'react';
-import {View, Text, SafeAreaView, StyleSheet} from 'react-native';
+import {View, Text, SafeAreaView, StyleSheet, FlatList, ScrollView} from 'react-native';
 import SearchField from "./SearchField";
 import FilterElement from "./FilterElement";
 //Image1 & ImageFrederik are imported pictures, used across the project
@@ -10,7 +10,7 @@ import ImageFrederik from "../../assets/frederik.jpg";
 import ImageCard from "../ImageCard";
 
 //Data constant copied from HomeScreen.js (Author: Frederik Bisp)
-const DATA =
+const DATA = [
     {
         id: '1',
         title: 'Fyldte champignon',
@@ -61,17 +61,30 @@ const DATA =
             subTitle: 'Son of a butcher',
             image: ImageFrederik
         }
-    };
+    }
+];
+
+
 
 //Created by Tobias Nielsen
-const SearchProfilesAndRecipies = () => {
+const SearchProfilesAndRecipies = ({navigation}) => {
+    const [query, setQuery] = useState('');
 
     return (
         <SafeAreaView>
-            <SearchField/>
+            <SearchField searchChanged={query => setQuery(query.toLowerCase())}/>
             <FilterElement/>
             <Text>Dette er både profiler og opskrifter der kan søges imellem</Text>
-            <ImageCard recipeObject={DATA}/>
+            <ScrollView>
+                {
+                    DATA.map(item => {
+                        //Search by title and author name
+                        if(item.title.toLowerCase().includes(query) || item.author.name.toLowerCase().includes(query)) {
+                            return <ImageCard key={item.id} recipeObject={item} navigation={navigation}/>
+                        }
+                    })
+                }
+            </ScrollView>
         </SafeAreaView>
     );
 };
