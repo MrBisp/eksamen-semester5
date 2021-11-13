@@ -4,14 +4,14 @@ import SearchProfilesAndRecipies from "./SearchProfilesAndRecipies";
 import SearchProfiles from "./SearchProfiles";
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import {StyleSheet} from "react-native";
 
 const Tab = createMaterialTopTabNavigator();
 
 const SearchScreen = () => {
 
     return(
-        <Tab.Navigator
-        >
+        <Tab.Navigator style={styles.safe}>
             <Tab.Screen name="Relevant" component={SearchProfilesAndRecipies}/>
             <Tab.Screen name="Profiler" component={SearchProfiles}/>
         </Tab.Navigator>
@@ -19,16 +19,11 @@ const SearchScreen = () => {
 
 };
 
-/*
-const styles = {
-    searchElement: {
-        width: 239,
-        height: 55,
-        backgroundColor: '#ebebeb',
-        overflow: visible,
-        borderRadius: 16,
-        padding: 20
+
+const styles = StyleSheet.create({
+    safe: {
+        paddingTop: 40
     }
-};*/
+});
 
 export default SearchScreen;

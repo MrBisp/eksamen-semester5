@@ -16,11 +16,17 @@ const SearchScreen = () => {
             placeholderTextColor={'#666666'}
             inputStyle={{backgroundColor: 'white'}}
             inputContainerStyle={{backgroundColor: 'white'}}
-            containerStyle={{backgroundColor: 'white', borderWidth: 1, borderRadius: 5, padding: 50}}
+            containerStyle={{backgroundColor: 'white', borderWidth: 1, borderRadius: 5, padding: 5}}
         />
     );
 };
 
 {/*HUSK AT SKIFTE NAVN*/}
 export default SearchScreen;
+
+const styles = StyleSheet.create({
+    safe: {
+        paddingTop: 60
+    }
+});
 

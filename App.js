@@ -2,15 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from './components/HomeScreen';
+
 import SettingsScreen from './components/SettingsScreen';
-import DetailsScreen from './components/DetailsScreen';
 import StackNavigator from "./components/StackNavigator";
-import { Ionicons } from '@expo/vector-icons';
-import Recipe from "./components/Recipe";
 import UploadScreen from "./components/UploadScreen";
 import ProfileScreen from "./components/ProfileScreen";
 import SearchScreen from "./components/searchComponents/SearchScreen";
+
+import { Ionicons } from '@expo/vector-icons';
 import firebase from "firebase/compat";
 
 // Recipeat's web app Firebase configuration
@@ -71,7 +70,7 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    paddingTop: 20
-  },
+    container: {
+        paddingTop: 20
+    }
 });

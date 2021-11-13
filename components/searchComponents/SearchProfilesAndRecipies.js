@@ -1,6 +1,6 @@
 //Created by Tobias Nielsen
 import React, {useState} from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
+import {View, Text, SafeAreaView, StyleSheet} from 'react-native';
 import SearchField from "./SearchField";
 import FilterElement from "./FilterElement";
 //Image1 & ImageFrederik are imported pictures, used across the project
@@ -77,3 +77,9 @@ const SearchProfilesAndRecipies = () => {
 };
 
 export default SearchProfilesAndRecipies;
+
+const styles = StyleSheet.create({
+    safe: {
+        paddingTop: 60
+    }
+});

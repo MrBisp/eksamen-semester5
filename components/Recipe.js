@@ -5,7 +5,7 @@ const Recipe = (props) => {
     //console.log(props);
     console.log(props.route.params.recipeObj)
     let recipeObj = props.route.params.recipeObj
-
+    
     return (
         <View style={styles.container}>
             <Text>Name: {recipeObj.title}</Text>

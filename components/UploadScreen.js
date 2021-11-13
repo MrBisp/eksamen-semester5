@@ -51,7 +51,6 @@ const UploadScreen = (props, route) => {
     }
 
     const saveRecipe = () => {
-
         const {recipe, description, time_Spent} = newRecipe;
 
         if (isEditRecipe) {
@@ -84,25 +83,25 @@ const UploadScreen = (props, route) => {
     }
 
     return(
-        <SafeAreaView>
-        <ScrollView>
-            {
-                Object.keys(initialState).map((key,index) =>{
-                    return(
-                            <View style={styles.row} key={index}>
-                            <Text style={styles.label}>{key}</Text>
-                            <TextInput
-                                value = {newRecipe[key]}
-                                onChangeText={(event) => changeTextInput(key,event)}
-                                style={styles.input}
-                                />
-                        </View>
-                    )
-            })
-            }
-            {/*This changes the button dependent on whether we edit or create recipe*/}
-            <Button title={isEditRecipe ? "Gem opskrift" : "Opret opskriften"} onPress={() =>saveRecipe()} />
-        </ScrollView>
+        <SafeAreaView style={styles.safe}>
+            <ScrollView>
+                {
+                    Object.keys(initialState).map((key,index) =>{
+                        return(
+                                <View style={styles.row} key={index}>
+                                <Text style={styles.label}>{key}</Text>
+                                <TextInput
+                                    value = {newRecipe[key]}
+                                    onChangeText={(event) => changeTextInput(key,event)}
+                                    style={styles.input}
+                                    />
+                            </View>
+                        )
+                })
+                }
+                {/*This changes the button dependent on whether we edit or create recipe*/}
+                <Button title={isEditRecipe ? "Gem opskrift" : "Opret opskriften"} onPress={() =>saveRecipe()} />
+            </ScrollView>
         </SafeAreaView>
     )
 
@@ -114,6 +113,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center'
+    },
+    safe: {
+        paddingTop: 60
     },
     row: {
         flexDirection: 'row',
