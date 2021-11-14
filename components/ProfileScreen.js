@@ -11,7 +11,7 @@ import {
     ImageBackground
 } from "react-native";
 import ImageFrederik from "../assets/frederik.jpg"
-import firebase from "firebase/compat";
+import firebase from "firebase/app";
 
 const ProfileScreen = (navigation) => {
     return(

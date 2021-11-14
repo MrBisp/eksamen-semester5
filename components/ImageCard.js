@@ -4,9 +4,7 @@ import {LinearGradient} from "expo-linear-gradient";
 import Recipe from "./Recipe";
 
 const ImageCard = (props) => {
-    //console.log(props.recipeObject);
     let recipeObj = props.recipeObject;
-    console.log(recipeObj)
 
     return (
         <View style={styles.item}>

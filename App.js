@@ -10,7 +10,7 @@ import ProfileScreen from "./components/ProfileScreen";
 import SearchScreen from "./components/searchComponents/SearchScreen";
 
 import { Ionicons } from '@expo/vector-icons';
-import firebase from "firebase/compat";
+import firebase from "firebase/app";
 
 // Recipeat's web app Firebase configuration
 const firebaseConfig = {

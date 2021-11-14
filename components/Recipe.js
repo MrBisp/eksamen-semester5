@@ -2,9 +2,8 @@ import React from 'react';
 import { StyleSheet, View,Text, Image, ImageBackground} from 'react-native';
 
 const Recipe = (props) => {
-    //console.log(props);
-    console.log(props.route.params.recipeObj)
     let recipeObj = props.route.params.recipeObj
+    console.log(recipeObj);
     
     return (
         <View style={styles.container}>
@@ -21,7 +20,8 @@ const Recipe = (props) => {
             </View>
             <View>
                 <Text>Ingredienser til 1 person</Text>
-                {recipeObj.ingredients.map(ingredient => {
+                {
+                    recipeObj.ingredients.map(ingredient => {
                     return (
                         <Text key={ingredient.id}>{ingredient.name}</Text>
                     );

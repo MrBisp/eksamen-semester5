@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {SafeAreaView, ScrollView, View, Text, TextInput, Button, StyleSheet, Alert} from "react-native";
-import firebase from "firebase/compat";
+import firebase from "firebase/app";
 
 const UploadScreen = (props, route) => {
     /*
