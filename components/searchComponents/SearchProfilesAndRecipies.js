@@ -96,7 +96,7 @@ const SearchProfilesAndRecipies = ({navigation}) => {
     }, [])
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.safe}>
             <SearchField searchChanged={query => setQuery(query.toLowerCase())}/>
             <FilterElement/>
             <Text>Dette er både profiler og opskrifter der kan søges imellem</Text>
@@ -124,9 +124,9 @@ export default SearchProfilesAndRecipies;
 
 const styles = StyleSheet.create({
     safe: {
-        paddingTop: 60
+
     },
     scroll:{
-        paddingBottom : 200
+        marginBottom : 120,
     }
 });
