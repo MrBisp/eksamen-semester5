@@ -58,7 +58,7 @@ const DATA = [
 
 
 export function fillInformationIn(recipes){
-    let result = []
+    let result = [];
     for(let i=0; i<recipes.length; i++){
         //Let's translate Jeppes property names into Frederik's naming convention
         if(recipes[i].hasOwnProperty('description')){

@@ -2,7 +2,7 @@
 import React from 'react';
 import SearchProfilesAndRecipies from "./SearchProfilesAndRecipies";
 import SearchProfiles from "./SearchProfiles";
-import { NavigationContainer } from '@react-navigation/native';
+import SearchRecipes from "./SearchRecipes";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import {StyleSheet} from "react-native";
 
@@ -14,6 +14,7 @@ const SearchScreen = () => {
         <Tab.Navigator style={styles.safe}>
             <Tab.Screen name="Relevant" component={SearchProfilesAndRecipies}/>
             <Tab.Screen name="Profiler" component={SearchProfiles}/>
+            <Tab.Screen name="Opskrifter" component={SearchRecipes}/>
         </Tab.Navigator>
     );
 

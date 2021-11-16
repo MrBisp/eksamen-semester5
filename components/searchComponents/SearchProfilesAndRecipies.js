@@ -8,11 +8,13 @@ require('firebase/database');
 
 import SearchField from "./SearchField";
 import FilterElement from "./FilterElement";
+import ProfileSmall from "../ProfileSmall";
+import RecipeSmall from "../RecipeSmall";
 //Image1 & ImageFrederik are imported pictures, used across the project
 import Image1 from "../../assets/champignon.jpg";
 import ImageFrederik from "../../assets/frederik.jpg";
+import ImageTobias from "../../assets/tobias.jpg";
 //ImageCard Component created by Frederik Bisp - imported to the view for visualize the usage of this Search View
-import ImageCard from "../ImageCard";
 
 //Data constant copied from HomeScreen.js (Author: Frederik Bisp)
 const DATA = [
@@ -78,41 +80,60 @@ const SearchProfilesAndRecipies = ({navigation}) => {
 
     useEffect(() => {
         if(recipes.length == 0) {
-            console.log('firebase starting...')
+            let result = [];
+            console.log('firebase starting...');
             const fb = firebase.database().ref('Recipes');
             fb.on('value', snapshot => {
-                let result = [];
                 let entries = Object.entries(snapshot.val());
                 for(let i=0; i<entries.length; i++){
-                    let result_obj = entries[i][1]
+                    let result_obj = entries[i][1];
                     result_obj.id = entries[i][0];
+                    result_obj.type = "recipe";
                     result.push(result_obj);
                 }
-                result.push(DATA[0]);
-                setRecipes(fillInformationIn(result));
             });
-            console.log('Firebase done')
+
+            const fb2 = firebase.database().ref('Profiles');
+            fb2.on('value', snapshot => {
+                let entries = Object.entries(snapshot.val());
+                for(let i=0; i<entries.length; i++){
+                    let result_obj = entries[i][1];
+                    result_obj.id = entries[i][0];
+                    result_obj.type = "profile";
+                    if(i%2 === 0) {
+                        result_obj.image = ImageFrederik;
+                    } else {
+                        result_obj.image = ImageTobias;
+                    }
+                    result.push(result_obj);
+                }
+            });
+            setRecipes(fillInformationIn(result));
+            console.log('Firebase done');
         }
-    }, [])
+    }, []);
 
     return (
         <SafeAreaView style={styles.safe}>
             <SearchField searchChanged={query => setQuery(query.toLowerCase())}/>
             <FilterElement/>
-            <Text>Dette er både profiler og opskrifter der kan søges imellem</Text>
             <ScrollView style={styles.scroll}>
                 {
                     //TO DO: Add a function that shows some message if there are zero results
 
                     //Search each recipe, and show them if they are within the search results
                     recipes.map(item => {
-                        //Search by title and author name
-                        if(item.title.toLowerCase().includes(query) || item.author.name.toLowerCase().includes(query)) {
-                            return <ImageCard key={item.id} recipeObject={item} navigation={navigation}/>
+
+                        if(item.type === "recipe") {
+                            //Search by title and author name
+                            if(item.title.toLowerCase().includes(query) || item.author.name.toLowerCase().includes(query)) {
+                                return <RecipeSmall key={item.id} obj={item} navigation={navigation}/>
+                            }
+                        } else {
+                            if(item.name.toLowerCase().includes(query)) {
+                                return <ProfileSmall key={item.id} obj={item} navigation={navigation}/>
+                            }
                         }
-                        /*if(item.description.toLowerCase().includes(query)){
-                            return <View key={item.id}><Text>{item.description} {item.time_Spent}</Text></View>
-                        }*/
                     })
                 }
             </ScrollView>

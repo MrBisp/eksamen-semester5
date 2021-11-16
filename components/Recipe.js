@@ -2,9 +2,9 @@ import React from 'react';
 import { StyleSheet, View,Text, Image, ImageBackground, ScrollView} from 'react-native';
 
 const Recipe = (props) => {
-    let recipeObj = props.route.params.recipeObj
+    let recipeObj = props.route.params.recipeObj;
     console.log(recipeObj);
-    
+
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.header}>{recipeObj.title}</Text>
