@@ -54,9 +54,9 @@ const DATA = [
             }
         ],
         author: {
-            name: 'Frederik Bisp',
-            subTitle: 'Son of a butcher',
-            image: ImageFrederik
+    name: 'Frederik Bisp',
+        subTitle: 'Son of a butcher',
+        image: ImageFrederik
         }
     }/*,
     {

@@ -1,29 +1,18 @@
 import React, {useEffect, useState} from "react";
-import {SafeAreaView, ScrollView, View, Text, TextInput, Button, StyleSheet, Alert} from "react-native";
+import {SafeAreaView, ScrollView, View, Text, TextInput, Button, StyleSheet, Alert, Image} from "react-native";
 import firebase from "firebase/app";
+import * as ImagePicker from "react-native-image-picker";
 
 const UploadScreen = (props, route) => {
-    /*
-    This code snippet is currently not being used - might be used if we want to change the way we create the upload form, to make each input in the form as an instance of a class.
-        class Input {
-            constructor(name, uploadType, id) {
-                this.name = name;
-                this.uploadType = uploadType;
-                this.id = id;
-
-            }
-            var nameOfDish = new Input('Ret',  )
-            var timeSpent = new Input('Arbejdstid på retten')
-
-        }
-
-
-     */
+    const handleChoosePhoto = (options, callback) => {
+        ImagePicker.launchImageLibrary(response => {
+            console.log("response", response);
+        }, callback)
+    }
 
 
 
     const initialState = {
-        //We should change these input's to object's instead - use this syntax: recipe: recipe: {initialValue:'', inputType:'TextInput'}
         recipe: '' ,
         description: '',
         time_Spent: '',
@@ -81,7 +70,26 @@ const UploadScreen = (props, route) => {
             }
         }
     }
+    return(
+        <SafeAreaView styles={styles.safe}>
+            <ScrollView>
+                <View style={styles.row}>
+                    <Text style={styles.row}>Titel</Text>
+                    <TextInput onChangeText={(event) => changeTextInput('recipe', event)} style={styles.input}/>
+                </View>
+                <View style={styles.row}>
+                    <Text style={styles.row}>Beskrivelse</Text>
+                    <TextInput value= {newRecipe.description} onChangeText={(event) => changeTextInput('description', event)} style={styles.input}/>
+                </View>
+                <View style={styles.container}>
+                    <Button title="Choose photo" onPress={() =>handleChoosePhoto()}/>
+                </View>
 
+                <Button title={isEditRecipe ? "Gem opskrift" : "Opret opskriften"} onPress={() =>saveRecipe()}  />
+            </ScrollView>
+        </SafeAreaView>
+    )
+/* This is currently not used. Might go back to it if needed.
     return(
         <SafeAreaView style={styles.safe}>
             <ScrollView>
@@ -99,11 +107,12 @@ const UploadScreen = (props, route) => {
                         )
                 })
                 }
-                {/*This changes the button dependent on whether we edit or create recipe*/}
+                //{This changes the button dependent on whether we edit or create recipe}
                 <Button title={isEditRecipe ? "Gem opskrift" : "Opret opskriften"} onPress={() =>saveRecipe()} />
             </ScrollView>
         </SafeAreaView>
-    )
+    )*/
+
 
 }
 
@@ -112,6 +121,7 @@ export default UploadScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        alignItems: 'center',
         justifyContent: 'center'
     },
     safe: {
