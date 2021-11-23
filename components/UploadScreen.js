@@ -3,6 +3,8 @@ import {SafeAreaView, ScrollView, View, Text, TextInput, Button, StyleSheet, Ale
 import firebase from "firebase/app";
 import * as ImagePicker from "react-native-image-picker";
 
+//TODO: Jeppe seriøst. Denne her virker sgu ikke særlig godt.
+
 const UploadScreen = (props, route) => {
     const handleChoosePhoto = (options, callback) => {
         ImagePicker.launchImageLibrary(response => {
@@ -125,7 +127,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     safe: {
-        paddingTop: 60
+        marginTop: 100
     },
     row: {
         flexDirection: 'row',

@@ -5,6 +5,8 @@ import ImageCard from "./ImageCard";
 import Image1 from "../assets/champignon.jpg"
 import Image2 from "../assets/bacon.jpg"
 import ImageFrederik from "../assets/frederik.jpg"
+import firebase from "firebase";
+import {fillInformationIn} from "../helpers/recipes";
 
 
 const DATA = [
@@ -54,7 +56,7 @@ const DATA = [
             }
         ],
         author: {
-    name: 'Frederik Bisp',
+        name: 'Frederik Bisp',
         subTitle: 'Son of a butcher',
         image: ImageFrederik
         }
@@ -95,13 +97,46 @@ const HomeScreen = ({navigation}) => {
     const renderItem = ({ item }) => (
         <ImageCard navigation={navigation} recipeObject={item} />
     );
+    let profiles = [];
+    let recipes = [];
+    let profileIDs = [];
+
+    //First, let's find all of the profiles that we currently follow
+    const fb = firebase.database().ref('Profiles');
+    fb.on('value', snapshot => {
+        let entries = Object.entries(snapshot.val());
+        //console.log(entries); //For some reason, it only works when console logging entries... Reminds me of the dual slid experiment
+        for(let i=0; i<entries.length; i++){
+            let result_obj = entries[i][1];
+            result_obj.id = entries[i][0];
+            if(result_obj.isFollowing === true){
+                profiles.push(result_obj);
+                profileIDs.push(result_obj.id)
+            }
+        }
+    });
+
+    //Then, let's get the recipes of these profiles
+    const fb2 = firebase.database().ref('Recipes');
+    fb2.on('value', snapshot => {
+        let entries = Object.entries(snapshot.val());
+        for(let i=0; i<entries.length; i++){
+            let result_obj = entries[i][1];
+            result_obj.id = entries[i][0];
+            if(profileIDs.indexOf(result_obj.authorID) != -1){
+                recipes.push(result_obj);
+            }
+        }
+    });
+    recipes = fillInformationIn(recipes);
+    console.log(recipes);
 
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.h1}>Sulten igen, Frederik?</Text>
             <SafeAreaView>
                 <FlatList
-                    data={DATA}
+                    data={recipes}
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
                 />

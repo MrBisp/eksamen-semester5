@@ -13,11 +13,11 @@
   - Kategori
   - Tid
   - Dato og tid for oprettelse (ikke synlig)
-  - Author (ikke synlig)
+  - Author-id (ikke synlig)
 - Søgefunktion (Tobias)
   - Skal kunne filtrere efter henholdsvis kategori og tid
   - Skal kunne søge efter navn og personer
-- Profil - Frederik
+- Profil (Frederik)
   - Skal indeholde følgere
   - Se opskrifter på profil
   - Søge på opskrifter på profil

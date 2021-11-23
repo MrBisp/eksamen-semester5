@@ -1,6 +1,7 @@
 import Image1 from "../assets/champignon.jpg";
 import Image2 from "../assets/bacon.jpg";
 import ImageFrederik from "../assets/frederik.jpg";
+import ImageTobias from "../assets/tobias.jpg"
 
 const DATA = [
     {
@@ -78,6 +79,27 @@ export function fillInformationIn(recipes){
                 recipes[i].image = Image2;
             }
         }
+
+        if(recipes[i].authorID == 'lkskdasdljkasdd') {
+            recipes[i].author = {
+                "image": ImageTobias,
+                "name": "Jeppe Reuther",
+                "subTitle": "Pizza lover 4 life"
+            };
+        } else if (recipes[i].authorID == 'asdasdafaf') {
+            recipes[i].author = {
+                "image": ImageTobias,
+                "name": "Tobias Nielsen",
+                "subTitle": "Intet slår en god sovs"
+            };
+        } else if (recipes[i].authorID == '-Moc2grEfmzBiUp0vSxY') {
+            recipes[i].author = {
+                "image": ImageFrederik,
+                "name": "Frederik Bisp",
+                "subTitle": "Son of a butcher"
+            };
+        }
+
         result.push({...DATA[0], ...recipes[i]});
     }
     return result;
