@@ -1,15 +1,17 @@
 //Created by Tobias Nielsen
-import React from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {Button, StyleSheet, Text, View, Pressable} from 'react-native';
 import {LinearGradient} from "expo-linear-gradient";
 
-const GradientButton = (props) => {
+const FollowButton = (props) => {
+    const [following, setFollowing] = useState(props.isFollowing);
+
     return (
-        <View style={styles.gradientButton}>
+        <Pressable onPress={() => {props.onClickFunction(!following); setFollowing(!following)}} style={styles.gradientButton}>
             <LinearGradient colors={['#EE1A67', '#FF6601']} style={styles.gradient} start={{x: 1, y: 0}} end={{x: 0, y: 0}}>
-                <Text style={styles.followButton}>{props.text}</Text>
+                <Text style={styles.followButton}>{following ? 'Følg ikke': 'Følg'}</Text>
             </LinearGradient>
-        </View>
+        </Pressable>
     );
 };
 
@@ -31,4 +33,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default GradientButton;
+export default FollowButton;

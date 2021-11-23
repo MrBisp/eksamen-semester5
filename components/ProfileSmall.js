@@ -10,7 +10,7 @@ const ProfileSmall = (props) => {
             <Pressable
                 onPress={()=> {
                     //Routen skal laves - Formentlig skal der tilføjes et element til StackNavigator.js der henviser til Profil siden, som Frederik Laver
-                    props.navigation.navigate('Min Profil', {profile});
+                    props.navigation.navigate('Andres profil', {profile});
                 }}
                 style={styles.container}
             >

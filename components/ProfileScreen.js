@@ -1,77 +1,120 @@
 import React, { useEffect, useState } from "react";
-import { SafeAreaView, ScrollView, View, Text, StyleSheet, ImageBackground, FlatList } from "react-native";
+import {SafeAreaView, ScrollView, View, Text, StyleSheet, ImageBackground, FlatList, Alert} from "react-native";
 import SearchScreen from "./searchComponents/SearchField"
 import ImageFrederik from "../assets/frederik.jpg"
 import firebase from "firebase";
 import ImageCard from "./ImageCard";
 import {fillInformationIn} from "../helpers/recipes";
 import {LinearGradient} from "expo-linear-gradient";
-import GradientButton from "./gradientButton";
+import FollowButton from "./followButton";
 import RecipeSmall from "./RecipeSmall";
 import ProfileSmall from "./ProfileSmall";
 
 const ProfileScreen = (props) => {
     const [query, setQuery] = useState('');
+    const [someKey, setSomeKey] = useState(1);
     let profile = {};
     let recipes = [];
     let recipesInitiated = false;
 
-    const renderItem = ({ item }) => (
-        <ImageCard navigation={props.navigation} recipeObject={item} />
-    );
-
-    //console.log(props)
-    if(props.route.params != undefined){
-        profile = props.route.params.profile;
-        profile.initiated = true;
-        console.log('Satte profile til: ' + profile.name);
-    }
-    //If there is no profile as props, initiate profile 0
-    if(!profile.hasOwnProperty('initiated')){
-        //Find Profile
-        let result = [];
-        const fb = firebase.database().ref('Profiles');
-        fb.on('value', snapshot => {
-            let entries = Object.entries(snapshot.val());
-            //console.log(entries); //For some reason, it only works when console logging entries... Reminds me of the dual slid experiment
-            for(let i=0; i<entries.length; i++){
-                let result_obj = entries[i][1];
-                result_obj.id = entries[i][0];
-                result_obj.initiated = 'true';
-                result.push(result_obj);
-                break;
-            }
+    React.useEffect(() => {
+        //Call this code, whenever we navigate to this screen
+        const unsubscribe = props.navigation.addListener('focus', () => {
+            reloadData();
         });
-        profile = result[0];
+        return unsubscribe;
+    }, [props.navigation]);
+
+    function reloadData(){
+        loadData();
+        //This is a bit of a hack. Whenever we have loaded new data, we will set the key to some new value, to force react to rerender the page
+        setSomeKey(Math.random());
     }
 
-    if(!recipesInitiated) {
-        //Find recipes made by author
-        let result2 = [];
-        const fb2 = firebase.database().ref('Recipes');
-        fb2.on('value', snapshot => {
-            let entries = Object.entries(snapshot.val());
-            for(let i=0; i<entries.length; i++){
-                let result_obj = entries[i][1];
-                result_obj.id = entries[i][0];
-                if(result_obj.hasOwnProperty('authorID')){
-                    if(result_obj.authorID == profile.id){
-                        result2.push(result_obj);
+    loadData();
+
+    function loadData() {
+        //console.log(props)
+        if(props.route.params != undefined){
+            profile = props.route.params.profile;
+            profile.initiated = true;
+            console.log('Satte profile til: ' + profile.name);
+        }
+        //If there is no profile as props, initiate profile 0
+        if(!profile.hasOwnProperty('initiated')){
+            //Find Profile
+            let result = [];
+            const fb = firebase.database().ref('Profiles');
+            fb.on('value', snapshot => {
+                let entries = Object.entries(snapshot.val());
+                //console.log(entries); //For some reason, it only works when console logging entries... Reminds me of the dual slid experiment
+                for(let i=0; i<entries.length; i++){
+                    let result_obj = entries[i][1];
+                    result_obj.id = entries[i][0];
+                    result_obj.initiated = 'true';
+                    result.push(result_obj);
+                    break;
+                }
+            });
+            profile = result[0];
+        }
+
+        if(!recipesInitiated) {
+            //Find recipes made by author
+            let result2 = [];
+            const fb2 = firebase.database().ref('Recipes');
+            fb2.on('value', snapshot => {
+                let entries = Object.entries(snapshot.val());
+                for(let i=0; i<entries.length; i++){
+                    let result_obj = entries[i][1];
+                    result_obj.id = entries[i][0];
+                    if(result_obj.hasOwnProperty('authorID')){
+                        if(result_obj.authorID == profile.id){
+                            result2.push(result_obj);
+                        }
                     }
                 }
-            }
-        });
-        recipesInitiated = true;
-        recipes = result2;
-        recipes = fillInformationIn(recipes);
+            });
+            recipesInitiated = true;
+            recipes = result2;
+            recipes = fillInformationIn(recipes);
+        }
     }
+
+
     //console.log(recipes);
 
+    function updateFollow(newValue) {
+        console.log('Update follow to ' + newValue);
+        let id = profile.id;
+        let addFollowers;
+        newValue ? addFollowers = 1 : addFollowers = -1
+        try {
+            //Here we access the database and goes to "Recipes" and find the recipe with the id of the recipe and update the values to the values in the input fields.
+            firebase.database()
+                .ref('/Profiles/'+id)
+                .update({'isFollowing': newValue, 'followers': profile.followers + addFollowers});
+
+            if(newValue){
+                Alert.alert('Super!', 'Du følger nu ' + profile.name);
+            } else {
+                Alert.alert('Super!', 'Du følger ikke længere ' + profile.name);
+            }
+            reloadData();
+        } catch (error) {
+            console.log('Error: ${error.message}');
+        }
+    }
+
+    let followBtn = followBtnFunction();
+    function followBtnFunction() {
+        return <FollowButton onClickFunction={(v) => updateFollow(v)} isFollowing={profile.isFollowing}/>;
+    }
 
     return(
         <SafeAreaView style={styles.container} key={profile.id}>
             <SearchScreen searchChanged={query => setQuery(query.toLowerCase())} />
-            <ScrollView>
+            <ScrollView key={someKey}>
                 <ImageBackground source={ImageFrederik} style={styles.profilePicture} />
                 <Text style={styles.h1}>{profile.name}</Text>
 
@@ -85,7 +128,7 @@ const ProfileScreen = (props) => {
                         <Text>opskrifter</Text>
                     </View>
                     <View style={styles.infoContainer}>
-                        <GradientButton text={'Følg'}/>
+                        {followBtn}
                     </View>
                 </View>
 
