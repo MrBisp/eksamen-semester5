@@ -34,4 +34,3 @@
   - [ ] Dato og tid for oprettelse
   - [ ] Antal likes
   - [ ] Hvor lang tid har du brugt på denne opskrift?
-  

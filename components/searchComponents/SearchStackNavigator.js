@@ -6,7 +6,7 @@ import SearchRecipes from "./SearchRecipes";
 import FilterScreen from "./FilterScreen";
 
 
-const StackNavigator = (props) => {
+const SearchStackNavigator = (props) => {
     const Stack = createStackNavigator();
 
     return (
@@ -19,4 +19,4 @@ const StackNavigator = (props) => {
     );
 };
 
-export default StackNavigator;
+export default SearchStackNavigator;
