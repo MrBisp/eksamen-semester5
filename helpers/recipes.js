@@ -80,7 +80,7 @@ export function fillInformationIn(recipes){
             };
         } else if (recipes[i].authorID == 'asdasdafaf') {
             recipes[i].author = {
-                "image": "https://firebasestorage.googleapis.com/v0/b/recipeat-46ec2.appspot.com/o/jeppe.jpg?alt=media&token=dc1e3830-8f3a-4a0d-bea4-f255b4dcdb11",
+                "image": "https://firebasestorage.googleapis.com/v0/b/recipeat-46ec2.appspot.com/o/tobias-brok-nielsen.jpg?alt=media&token=acaac94b-2acd-456b-8cae-b6c3cafdd743\"",
                 "name": "Tobias Nielsen",
                 "subTitle": "Intet slår en god sovs"
             };

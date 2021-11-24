@@ -117,7 +117,7 @@ const ProfileScreen = (props) => {
     return(
         <SafeAreaView style={styles.container} key={profile.id}>
             <SearchScreen searchChanged={query => setQuery(query.toLowerCase())} />
-            <ScrollView key={someKey}>
+            <ScrollView key={someKey} style={{marginBottom: 70}}>
                 <ImageBackground source={{uri: profile.image}} style={styles.profilePicture} />
                 <Text style={styles.h1}>{profile.name}</Text>
 
