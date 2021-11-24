@@ -7,7 +7,12 @@ const FollowButton = (props) => {
     const [following, setFollowing] = useState(props.isFollowing);
 
     return (
-        <Pressable onPress={() => {props.onClickFunction(!following); setFollowing(!following)}} style={styles.gradientButton}>
+        <Pressable onPress={() => {
+            //console.log('Før: ' + following);
+            props.onClickFunction(!following);
+            setFollowing(!following);
+            //console.log('Efter: ' + following);
+        }} style={styles.gradientButton}>
             <LinearGradient colors={['#EE1A67', '#FF6601']} style={styles.gradient} start={{x: 1, y: 0}} end={{x: 0, y: 0}}>
                 <Text style={styles.followButton}>{following ? 'Følg ikke': 'Følg'}</Text>
             </LinearGradient>

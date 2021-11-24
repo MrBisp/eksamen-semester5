@@ -57,7 +57,6 @@ const SearchProfilesAndRecipies = ({navigation}) => {
             setRecipes(fillInformationIn(result));
             console.log('Firebase done');
         }
-        console.log(recipes);
     }, []);
 
     return (
@@ -70,7 +69,6 @@ const SearchProfilesAndRecipies = ({navigation}) => {
 
                     //Search each recipe, and show them if they are within the search results
                     recipes.map(item => {
-                        console.log('Mappede over en item');
                         if(item.type === "recipe") {
                             //Search by title and author name
                             if(item.title.toLowerCase().includes(query) || item.author.name.toLowerCase().includes(query)) {
