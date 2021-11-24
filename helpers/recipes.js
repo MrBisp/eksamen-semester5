@@ -2,6 +2,7 @@ import Image1 from "../assets/champignon.jpg";
 import Image2 from "../assets/bacon.jpg";
 import ImageFrederik from "../assets/frederik.jpg";
 import ImageTobias from "../assets/tobias.jpg"
+import ImageJeppe from "../assets/jeppe.jpg"
 
 const DATA = [
     {
@@ -71,35 +72,30 @@ export function fillInformationIn(recipes){
             recipes[i].title = "Røget laks";
         }
 
-        //Assign a random photo if the recipie does not have a recipe already
-        if(!recipes[i].hasOwnProperty('image')){
-            if(i%2 == 0){
-                recipes[i].image = Image1;
-            } else {
-                recipes[i].image = Image2;
-            }
-        }
-
         if(recipes[i].authorID == 'lkskdasdljkasdd') {
             recipes[i].author = {
-                "image": ImageTobias,
+                "image": "https://firebasestorage.googleapis.com/v0/b/recipeat-46ec2.appspot.com/o/jeppe.jpg?alt=media&token=dc1e3830-8f3a-4a0d-bea4-f255b4dcdb11",
                 "name": "Jeppe Reuther",
                 "subTitle": "Pizza lover 4 life"
             };
         } else if (recipes[i].authorID == 'asdasdafaf') {
             recipes[i].author = {
-                "image": ImageTobias,
+                "image": "https://firebasestorage.googleapis.com/v0/b/recipeat-46ec2.appspot.com/o/jeppe.jpg?alt=media&token=dc1e3830-8f3a-4a0d-bea4-f255b4dcdb11",
                 "name": "Tobias Nielsen",
                 "subTitle": "Intet slår en god sovs"
             };
         } else if (recipes[i].authorID == '-Moc2grEfmzBiUp0vSxY') {
             recipes[i].author = {
-                "image": ImageFrederik,
+                "image": "https://firebasestorage.googleapis.com/v0/b/recipeat-46ec2.appspot.com/o/frederik%20(1).jpg?alt=media&token=cd1c746a-54ea-4174-9a9e-82ee6ee10c25",
                 "name": "Frederik Bisp",
                 "subTitle": "Son of a butcher"
             };
         }
 
+        if(recipes[i].image == undefined){
+            recipes[i].image = "https://firebasestorage.googleapis.com/v0/b/recipeat-46ec2.appspot.com/o/pizza-lort-lort.PNG?alt=media&token=67bf63f8-bc78-46ad-9078-ce50d66351c9";
+        }
+        console.log(recipes[i].image);
         result.push({...DATA[0], ...recipes[i]});
     }
     return result;

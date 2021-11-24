@@ -14,7 +14,7 @@ const ProfileSmall = (props) => {
                 }}
                 style={styles.container}
             >
-                <ImageBackground source={profile.image} style={styles.authorImage}/>
+                <ImageBackground source={{uri: profile.image}} style={styles.authorImage}/>
                 <View>
                     <Text style={styles.authorName}>{profile.name}</Text>
                     <Text style={styles.authorTitle}>{profile.subTitle}</Text>

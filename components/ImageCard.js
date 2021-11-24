@@ -11,7 +11,7 @@ const ImageCard = (props) => {
             <Pressable onPress={()=> {
                 props.navigation.navigate('Opskrift', {recipeObj});
             }}>
-                <ImageBackground source={recipeObj.image} style={{width:'100%', height:200}}>
+                <ImageBackground source={{uri: recipeObj.image}} style={{width:'100%', height:200}}>
                     <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,1)']} style={styles.gradient}>
                         <View style={styles.textContainer}>
                             <Text style={styles.title}>{recipeObj.title}</Text>

@@ -45,11 +45,6 @@ const SearchProfilesAndRecipies = ({navigation}) => {
                     let result_obj = entries[i][1];
                     result_obj.id = entries[i][0];
                     result_obj.type = "profile";
-                    if(i%2 === 0) {
-                        result_obj.image = ImageFrederik;
-                    } else {
-                        result_obj.image = ImageTobias;
-                    }
                     result.push(result_obj);
                 }
             });

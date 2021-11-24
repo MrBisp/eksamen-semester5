@@ -16,7 +16,7 @@ const Recipe = (props) => {
                 </View>
             </View>
             <View style={{width: '100%'}}>
-                <Image source={recipeObj.image} style={{width:'100%', height: 400, resizeMode: 'contain'}} />
+                <Image source={{uri: recipeObj.image}} style={{width:'100%', height: 400, resizeMode: 'contain'}} />
                 <Text style={styles.likes}>{recipeObj.likesTotal} ({recipeObj.likesPercentage}%) ville lave denne igen</Text>
                 <Text style={styles.time}>Kan laves på under: {recipeObj.time} minutter</Text>
             </View>

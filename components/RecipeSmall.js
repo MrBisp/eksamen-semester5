@@ -13,7 +13,7 @@ const RecipeSmall = (props) => {
                 }}
                 style={styles.container}
             >
-                <ImageBackground source={recipe.image} style={styles.image}/>
+                <ImageBackground source={{uri: recipe.image}} style={styles.image}/>
                 <View>
                     <Text style={styles.name}>{recipe.title}</Text>
                     <Text style={styles.title}>{recipe.author.name}</Text>

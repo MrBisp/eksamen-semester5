@@ -29,7 +29,7 @@ const HomeScreen = ({navigation}) => {
     }, [navigation]);
 
     React.useEffect(() => {
-        console.log('recipies effect')
+        //console.log('recipies effect')
 
         loadData();
     }, []);
@@ -67,7 +67,7 @@ const HomeScreen = ({navigation}) => {
                     let result_obj = entries[i][1];
                     result_obj.id = entries[i][0];
                     if(profileIDs.indexOf(result_obj.authorID) != -1){
-                        console.log('Mathcede ' + result_obj.authorID);
+                        //console.log('Mathcede ' + result_obj.authorID);
                         result.push(result_obj);
                     }
                 }
@@ -84,8 +84,8 @@ const HomeScreen = ({navigation}) => {
 
     //Can't make this part work, so let's leave it for now.
     function returnItemsFunction(){
-        console.log('Antal profiler der følges: ' + profileIDs.length);
-        console.log('Antal recipies: ' + recipes.length);
+        //console.log('Antal profiler der følges: ' + profileIDs.length);
+        //console.log('Antal recipies: ' + recipes.length);
         if(recipes.length > 0){
             return <FlatList
                 data={recipes}
@@ -93,7 +93,7 @@ const HomeScreen = ({navigation}) => {
                 keyExtractor={item => item.id}
             />;
         } else {
-            console.log('Følger ingen profiler');
+            //console.log('Følger ingen profiler');
             return <Text style={styles.followText}>Følg nogle profiler, så du kan se noget i dit feed!</Text>
         }
     }
