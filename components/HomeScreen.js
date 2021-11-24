@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, View, Text, FlatList, Image, SafeAreaView, ImageBackground, ScrollView } from 'react-native';
 import ImageCard from "./ImageCard";
 import firebase from "firebase";
@@ -24,6 +24,8 @@ const HomeScreen = ({navigation}) => {
         });
         return unsubscribe;
     }, [navigation]);
+
+
 
     loadData();
     function loadData(){
@@ -71,6 +73,7 @@ const HomeScreen = ({navigation}) => {
                 keyExtractor={item => item.id}
             />;
         } else {
+            console.log('Følger ingen profiler');
             return <Text style={styles.followText}>Følg nogle profiler, så du kan se noget i dit feed!</Text>
         }
     }
@@ -78,6 +81,7 @@ const HomeScreen = ({navigation}) => {
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.h1}>Sulten igen, Frederik?</Text>
+            <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/recipeat-46ec2.appspot.com/o/blomk%C3%A5l%20og%20schnitzel.jpg?alt=media&token=461c253a-45d7-4916-9882-913e3d9c1818'}} style={{width: 200, height: 200}} />
             <SafeAreaView key={someKey}>
                 {returnItems}
             </SafeAreaView>
@@ -85,13 +89,15 @@ const HomeScreen = ({navigation}) => {
     );
 }
 
+
 {/*HUSK AT SKIFTE NAVN*/}
 export default HomeScreen;
 
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop:40
+        paddingTop:40,
+        paddingBottom: 40
     },
     h1: {
         fontSize: 42,
