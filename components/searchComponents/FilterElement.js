@@ -2,13 +2,17 @@
 import React from 'react';
 import {Button, StyleSheet} from 'react-native';
 
-const FilterElement = () => {
+const FilterElement = ({navigation}) => {
+
     return (
         <Button
             style={styles.button}
             title="Filter"
             type="outline"
             raised={true}
+            onPress={() =>{
+                navigation.navigate('Filter', {page: "SearchProfilesAndRecipes"});
+            }}
             containerStyle={{borderWidth: 3, borderRadius: 7}}
         />
     );

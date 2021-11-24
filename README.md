@@ -16,7 +16,7 @@
   - Author (ikke synlig)
 - Søgefunktion (Tobias)
   - Skal kunne filtrere efter henholdsvis kategori og tid
-  - Skal kunne søge efter navn og personer
+  - Skal kunne søge efter navn og personer - DONE
 - Profil - Frederik
   - Skal indeholde følgere
   - Se opskrifter på profil
@@ -34,4 +34,3 @@
   - Dato og tid for oprettelse
   - Antal likes
   - Hvor lang tid har du brugt på denne opskrift?
-  
