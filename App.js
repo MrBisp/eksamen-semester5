@@ -4,13 +4,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import SettingsScreen from './components/SettingsScreen';
-import StackNavigator from "./components/StackNavigator";
 import UploadScreen from "./components/UploadScreen";
 import ProfileScreen from "./components/ProfileScreen";
-import SearchScreen from "./components/searchComponents/SearchScreen";
 
 import { Ionicons } from '@expo/vector-icons';
 import firebase from "firebase/app";
+import HomeScreen from "./components/HomeScreen";
+import searchStackNavigator from "./components/searchStackNavigator";
 
 // Recipeat's web app Firebase configuration
 const firebaseConfig = {
@@ -40,7 +40,7 @@ export default function App() {
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
 
-                    if (route.name === 'Dit feed') {
+                    if (route.name === 'Home') {
                         iconName = focused ? 'ios-home' : 'ios-home-outline';
                     } else if (route.name === 'Settings') {
                         iconName = focused ? 'ios-list' : 'ios-list';
@@ -59,8 +59,8 @@ export default function App() {
                 tabBarInactiveTintColor: 'gray',
             })}
         >
-            <Tab.Screen name={'Dit feed'} component={StackNavigator} options={{headerShown: false}}/>
-            <Tab.Screen name={'Søg'} component={SearchScreen} options={{headerShown: false}}/>
+            <Tab.Screen name={'Home'} component={HomeScreen} options={{headerShown: false}}/>
+            <Tab.Screen name={'Søg'} component={searchStackNavigator} options={{headerShown: false}}/>
             <Tab.Screen name={'Upload opskrift'} component={UploadScreen} options={{headerShown: false}}/>
             <Tab.Screen name={'Min Profil'} component={ProfileScreen} options={{headerShown: false}}/>
             <Tab.Screen name={'Settings'} component={SettingsScreen} options={{headerShown: false}} />

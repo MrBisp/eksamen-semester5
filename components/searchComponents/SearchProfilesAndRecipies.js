@@ -16,62 +16,7 @@ import ImageFrederik from "../../assets/frederik.jpg";
 import ImageTobias from "../../assets/tobias.jpg";
 //ImageCard Component created by Frederik Bisp - imported to the view for visualize the usage of this Search View
 
-//Data constant copied from HomeScreen.js (Author: Frederik Bisp)
-const DATA = [
-    {
-        id: '1',
-        title: 'Fyldte champignon',
-        image: Image1,
-        likesTotal: 18578,
-        likesPercentage: 92,
-        time: 15,
-        ingredients: [
-            {
-                name: 'champignon',
-                amount: 10,
-                unit: 'stk',
-                id: 'ingredient0'
-            },
-            {
-                name: 'fetaost',
-                amount: 300,
-                unit: 'g',
-                id: 'ingredient1'
-            },
-            {
-                name: 'Økologisk pesto',
-                amount: 1,
-                unit: 'glas',
-                id: 'ingredient2'
-            },
-        ],
-        recipe: [
-            {
-                description: 'Fjern toppen fra champignonen',
-                id: 'step0'
-            },
-            {
-                description: 'Skær osten ud',
-                id: 'step2'
-            },
-            {
-                description: 'Fordel pesto og ost i champignonen',
-                id: 'step3'
-            },
-            {
-                description: 'Varm i ovn i 8 minutter ved 200 grader varmluft.',
-                id: 'step4'
-            }
-        ],
-        author: {
-            name: 'Frederik Bisp',
-            subTitle: 'Son of a butcher',
-            image: ImageFrederik
-        }
-    }
-];
-
-
+//TODO: Af en eller anden grund viser den sommetider ingen resultater, selvom det tydeligt logges i consolen at dataen er hentet ned?
 
 //Created by Tobias Nielsen
 const SearchProfilesAndRecipies = ({navigation}) => {
@@ -108,9 +53,11 @@ const SearchProfilesAndRecipies = ({navigation}) => {
                     result.push(result_obj);
                 }
             });
+            //TODO: Tobias, lige nu fylder vi infomationer ind i profilesene i fillInfomrationIn. Man bør nok gemme dem i to forskellige arrays i stedet
             setRecipes(fillInformationIn(result));
             console.log('Firebase done');
         }
+        console.log(recipes);
     }, []);
 
     return (
@@ -123,7 +70,7 @@ const SearchProfilesAndRecipies = ({navigation}) => {
 
                     //Search each recipe, and show them if they are within the search results
                     recipes.map(item => {
-
+                        console.log('Mappede over en item');
                         if(item.type === "recipe") {
                             //Search by title and author name
                             if(item.title.toLowerCase().includes(query) || item.author.name.toLowerCase().includes(query)) {
