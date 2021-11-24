@@ -9,14 +9,14 @@ const Recipe = (props) => {
         <ScrollView style={styles.container}>
             <Text style={styles.header}>{recipeObj.title}</Text>
             <View style={styles.authorContainer}>
-                <ImageBackground style={styles.authorImage} source={recipeObj.author.image} />
+                <ImageBackground style={styles.authorImage} source={{uri: recipeObj.author.image}} />
                 <View>
                     <Text style={styles.authorName}>{recipeObj.author.name}</Text>
                     <Text style={styles.authorTitle}>{recipeObj.author.subTitle}</Text>
                 </View>
             </View>
             <View style={{width: '100%'}}>
-                <Image source={recipeObj.image} style={{width:'100%', height: 400, resizeMode: 'contain'}} />
+                <Image source={{uri: recipeObj.image}} style={{width:'100%', height: 400, resizeMode: 'contain'}} />
                 <Text style={styles.likes}>{recipeObj.likesTotal} ({recipeObj.likesPercentage}%) ville lave denne igen</Text>
                 <Text style={styles.time}>Kan laves på under: {recipeObj.time} minutter</Text>
             </View>
@@ -46,7 +46,7 @@ export default Recipe;
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 20,
+        marginTop: 50,
         paddingLeft: 8,
         paddingRight: 8
     },

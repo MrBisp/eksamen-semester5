@@ -34,11 +34,10 @@ const ProfileScreen = (props) => {
     loadData();
 
     function loadData() {
-        //console.log(props)
         if(props.route.params != undefined){
             profile = props.route.params.profile;
             profile.initiated = true;
-            console.log('Satte profile til: ' + profile.name);
+            console.log('Satte params profile til: ' + profile.name);
         }
         //If there is no profile as props, initiate profile 0
         if(!profile.hasOwnProperty('initiated')){
@@ -51,12 +50,13 @@ const ProfileScreen = (props) => {
                 for(let i=0; i<entries.length; i++){
                     let result_obj = entries[i][1];
                     result_obj.id = entries[i][0];
-                    result_obj.initiated = 'true';
+                    result_obj.initiated = true;
                     result.push(result_obj);
                     break;
                 }
             });
             profile = result[0];
+            console.log('Satte firebase profile til: ' + profile.name);
         }
 
         if(!recipesInitiated) {
@@ -85,10 +85,10 @@ const ProfileScreen = (props) => {
     //console.log(recipes);
 
     function updateFollow(newValue) {
-        console.log('Update follow to ' + newValue);
+        console.log('Updating ' + profile.name + ' follow to ' + newValue);
         let id = profile.id;
         let addFollowers;
-        newValue ? addFollowers = 1 : addFollowers = -1
+        newValue ? addFollowers = 1 : addFollowers = -1;
         try {
             //Here we access the database and goes to "Recipes" and find the recipe with the id of the recipe and update the values to the values in the input fields.
             firebase.database()
@@ -100,7 +100,10 @@ const ProfileScreen = (props) => {
             } else {
                 Alert.alert('Super!', 'Du følger ikke længere ' + profile.name);
             }
-            reloadData();
+            profile.followers = profile.followers + addFollowers;
+            profile.isFollowing = newValue;
+            loadData();
+            setSomeKey(Math.random());
         } catch (error) {
             console.log('Error: ${error.message}');
         }
@@ -114,8 +117,8 @@ const ProfileScreen = (props) => {
     return(
         <SafeAreaView style={styles.container} key={profile.id}>
             <SearchScreen searchChanged={query => setQuery(query.toLowerCase())} />
-            <ScrollView key={someKey}>
-                <ImageBackground source={ImageFrederik} style={styles.profilePicture} />
+            <ScrollView key={someKey} style={{marginBottom: 70}}>
+                <ImageBackground source={{uri: profile.image}} style={styles.profilePicture} />
                 <Text style={styles.h1}>{profile.name}</Text>
 
                 <View style={styles.row}>
