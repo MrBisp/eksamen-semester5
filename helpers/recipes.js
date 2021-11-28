@@ -12,44 +12,8 @@ const DATA = [
         likesTotal: 18578,
         likesPercentage: 92,
         time: 15,
-        ingredients: [
-            {
-                name: 'champignon',
-                amount: 10,
-                unit: 'stk',
-                id: 'ingredient0'
-            },
-            {
-                name: 'fetaost',
-                amount: 300,
-                unit: 'g',
-                id: 'ingredient1'
-            },
-            {
-                name: 'Økologisk pesto',
-                amount: 1,
-                unit: 'glas',
-                id: 'ingredient2'
-            },
-        ],
-        recipe: [
-            {
-                description: 'Fjern toppen fra champignonen',
-                id: 'step0'
-            },
-            {
-                description: 'Skær osten ud',
-                id: 'step2'
-            },
-            {
-                description: 'Fordel pesto og ost i champignonen',
-                id: 'step3'
-            },
-            {
-                description: 'Varm i ovn i 8 minutter ved 200 grader varmluft.',
-                id: 'step4'
-            }
-        ],
+        ingredients: 'Ingredienser',
+        recipe: 'Step 1, step 2, step 3',
         author: {
             name: 'Frederik Bisp',
             subTitle: 'Son of a butcher',
@@ -95,7 +59,6 @@ export function fillInformationIn(recipes){
         if(recipes[i].image == undefined || recipes[i].image == null){
             recipes[i].image = "https://firebasestorage.googleapis.com/v0/b/recipeat-46ec2.appspot.com/o/pizza-lort-lort.PNG?alt=media&token=67bf63f8-bc78-46ad-9078-ce50d66351c9";
         }
-        console.log(recipes[i].image);
         result.push({...DATA[0], ...recipes[i]});
     }
     return result;
