@@ -92,7 +92,7 @@ export function fillInformationIn(recipes){
             };
         }
 
-        if(recipes[i].image == undefined){
+        if(recipes[i].image == undefined || recipes[i].image == null){
             recipes[i].image = "https://firebasestorage.googleapis.com/v0/b/recipeat-46ec2.appspot.com/o/pizza-lort-lort.PNG?alt=media&token=67bf63f8-bc78-46ad-9078-ce50d66351c9";
         }
         console.log(recipes[i].image);

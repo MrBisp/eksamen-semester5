@@ -11,6 +11,7 @@ import { Ionicons } from '@expo/vector-icons';
 import firebase from "firebase/app";
 import HomeScreen from "./components/HomeScreen";
 import searchScreen from "./components/searchComponents/SearchScreen";
+import searchStackNavigator from "./components/searchStackNavigator";
 
 // Recipeat's web app Firebase configuration
 const firebaseConfig = {
@@ -60,7 +61,7 @@ export default function App() {
             })}
         >
             <Tab.Screen name={'Home'} component={HomeScreen} options={{headerShown: false}}/>
-            <Tab.Screen name={'Søg'} component={searchScreen} options={{headerShown: false}}/>
+            <Tab.Screen name={'Søg'} component={searchStackNavigator} options={{headerShown: false}}/>
             <Tab.Screen name={'Upload opskrift'} component={UploadScreen} options={{headerShown: false}}/>
             <Tab.Screen name={'Min Profil'} component={ProfileScreen} options={{headerShown: false}}/>
             <Tab.Screen name={'Settings'} component={SettingsScreen} options={{headerShown: false}} />

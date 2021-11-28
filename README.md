@@ -17,13 +17,13 @@
 - [ ] Søgefunktion (Tobias)
   - [ ] Skal kunne filtrere efter henholdsvis kategori og tid
   - [x] Skal kunne søge efter navn og personer
-- [ ] Profil (Frederik)
-  - [ ] Skal indeholde følgere
+- [x] Profil (Frederik)
+  - [x] Skal indeholde følgere
   - [x] Se opskrifter på profil
   - [x] Søge på opskrifter på profil
 - [ ] Opskrift
   - [x] Navn på forfatter
-  - [ ] Billede på forfatter
+  - [x] Billede på forfatter
   - [x] Navn på opskrift
   - [x] Billede på opskrift
   - [x] Fremgangsmåde
