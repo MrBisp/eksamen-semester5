@@ -1,20 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import createStackNavigator from "@react-navigation/stack/src/navigators/createStackNavigator";
 import SearchProfilesAndRecipies from "./SearchProfilesAndRecipies";
 import SearchProfiles from "./SearchProfiles";
 import SearchRecipes from "./SearchRecipes";
-import FilterScreen from "./FilterScreen";
+import firebase from "firebase";
+import {fillInformationIn} from "../../helpers/recipes";
 
 
-const SearchStackNavigator = (props) => {
+const SearchStackNavigator = ({navigation}) => {
     const Stack = createStackNavigator();
 
     return (
         <Stack.Navigator>
-            <Stack.Screen name={'SearchProfilesAndRecipies'} component={SearchProfilesAndRecipies}/>
-            <Stack.Screen name={'SearchProfiles'} component={SearchProfiles}/>
-            <Stack.Screen name={'SearchRecipes'} component={SearchRecipes}/>
-            <Stack.Screen name={'FilterScreen'} component={FilterScreen}/>
+            <Stack.Screen name={'SearchProfilesAndRecipies'} children={() => <SearchProfilesAndRecipies navigation={navigation} data={recipeProfiles}/>}/>
+            <Stack.Screen name={'SearchProfiles'} children={() => <SearchProfiles navigation={navigation} data={profiles}/>}/>
+            <Stack.Screen name={'SearchRecipes'} children={() => <SearchRecipes navigation={navigation} data={recipes}/>}/>
         </Stack.Navigator>
     );
 };

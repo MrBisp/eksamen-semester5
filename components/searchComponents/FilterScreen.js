@@ -1,11 +1,19 @@
 import React from 'react';
-import { StyleSheet, View,Text} from 'react-native';
+import {StyleSheet, View, Text, Modal} from 'react-native';
+import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 
 const FilterScreen = () => {
 
     return (
         <View>
-
+            <Modal>
+                <View>
+                    <View>
+                        <Text>Hello World!</Text>
+                            <Text>Hide Modal</Text>
+                    </View>
+                </View>
+            </Modal>
         </View>
     );
 };

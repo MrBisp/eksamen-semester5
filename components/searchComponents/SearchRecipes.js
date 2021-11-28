@@ -6,16 +6,17 @@ import FilterElement from "./FilterElement";
 import firebase from "firebase";
 import {fillInformationIn} from "../../helpers/recipes";
 import RecipeSmall from "../RecipeSmall";
+import NewFilterScreen from "./NewFilterScreen";
 
 
-const SearchRecipes = ({navigation}) => {
+const SearchRecipes = (props) => {
     const [query, setQuery] = useState('');
     const data = props.data;
 
     return (
         <SafeAreaView>
             <SearchField searchChanged={query => setQuery(query.toLowerCase())}/>
-            <FilterElement/>
+            <NewFilterScreen/>
             <ScrollView style={styles.scroll}>
                 {
                     //TO DO: Add a function that shows some message if there are zero results
@@ -24,7 +25,7 @@ const SearchRecipes = ({navigation}) => {
                     data.map(item => {
                         //Search by title and author name
                         if(item.title.toLowerCase().includes(query) || item.author.name.toLowerCase().includes(query)) {
-                            return <RecipeSmall key={item.id} obj={item} navigation={navigation}/>
+                            return <RecipeSmall key={item.id} obj={item} navigation={props.navigation}/>
                         }
                     })
                 }

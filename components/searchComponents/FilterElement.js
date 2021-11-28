@@ -11,7 +11,7 @@ const FilterElement = ({navigation}) => {
             type="outline"
             raised={true}
             onPress={() =>{
-                navigation.navigate('Filter', {page: "SearchProfilesAndRecipes"});
+                navigation.navigate('Filter');
             }}
             containerStyle={{borderWidth: 3, borderRadius: 7}}
         />

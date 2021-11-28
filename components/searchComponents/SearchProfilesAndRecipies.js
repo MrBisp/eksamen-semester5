@@ -8,6 +8,7 @@ require('firebase/database');
 
 import SearchField from "./SearchField";
 import FilterElement from "./FilterElement";
+import NewFilterScreen from "./NewFilterScreen";
 import ProfileSmall from "../ProfileSmall";
 import RecipeSmall from "../RecipeSmall";
 //Image1 & ImageFrederik are imported pictures, used across the project
@@ -19,15 +20,16 @@ import ImageTobias from "../../assets/tobias.jpg";
 //TODO: Af en eller anden grund viser den sommetider ingen resultater, selvom det tydeligt logges i consolen at dataen er hentet ned?
 
 //Created by Tobias Nielsen
-const SearchProfilesAndRecipies = (props, {navigation}) => {
+const SearchProfilesAndRecipies = (props) => {
     const [query, setQuery] = useState('');
-    console.log(props);
+    //console.log(props.data);
+    //console.log(props.data);
     const data = props.data;
 
     return (
         <SafeAreaView style={styles.safe}>
             <SearchField searchChanged={query => setQuery(query.toLowerCase())}/>
-            <FilterElement/>
+            <NewFilterScreen/>
             <ScrollView style={styles.scroll}>
                 {
                     //TO DO: Add a function that shows some message if there are zero results
@@ -38,11 +40,11 @@ const SearchProfilesAndRecipies = (props, {navigation}) => {
                         if(item.type === "recipe") {
                             //Search by title and author name
                             if(item.title.toLowerCase().includes(query) || item.author.name.toLowerCase().includes(query)) {
-                                return <RecipeSmall key={item.id} obj={item} navigation={navigation}/>
+                                return <RecipeSmall key={item.id} obj={item} navigation={props.navigation}/>
                             }
                         } else {
                             if(item.name.toLowerCase().includes(query)) {
-                                return <ProfileSmall key={item.id} obj={item} navigation={navigation}/>
+                                return <ProfileSmall key={item.id} obj={item} navigation={props.navigation}/>
                             }
                         }
                     })

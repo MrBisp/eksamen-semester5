@@ -2,21 +2,21 @@ import React from 'react';
 import {Pressable, StyleSheet, View, Text, ImageBackground} from 'react-native';
 
 const RecipeSmall = (props) => {
-    let recipe = props.obj;
+    let recipeObj = props.obj;
 
     return (
         <View style={styles.item}>
             <Pressable
                 onPress={()=> {
                     //Routen skal laves - Formentlig skal der tilføjes et element til StackNavigator.js der henviser til Profil siden, som Frederik Laver
-                    props.navigation.navigate('Opskrift', {recipe});
+                    props.navigation.navigate('Opskrift', {recipeObj});
                 }}
                 style={styles.container}
             >
-                <ImageBackground source={{uri: recipe.image}} style={styles.image}/>
+                <ImageBackground source={{uri: recipeObj.image}} style={styles.image}/>
                 <View>
-                    <Text style={styles.name}>{recipe.title}</Text>
-                    <Text style={styles.title}>{recipe.author.name}</Text>
+                    <Text style={styles.name}>{recipeObj.title}</Text>
+                    <Text style={styles.title}>{recipeObj.author.name}</Text>
                 </View>
             </Pressable>
         </View>

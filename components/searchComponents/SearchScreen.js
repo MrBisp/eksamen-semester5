@@ -33,13 +33,13 @@ const SearchScreen = ({navigation}) => {
     function loadData() {
         if(recipes.length === 0) {
             let recipes = [];
-            let profiles = [];
+            let profilesArr = [];
 
             console.log('firebase starting...');
             const fb = firebase.database().ref('Recipes');
             fb.on('value', snapshot => {
                 let entries = Object.entries(snapshot.val());
-                for(let i=0; i<entries.length; i++){
+                for (let i = 0; i < entries.length; i++) {
                     let result_obj = entries[i][1];
                     result_obj.id = entries[i][0];
                     result_obj.type = "recipe";
@@ -50,34 +50,42 @@ const SearchScreen = ({navigation}) => {
             const fb2 = firebase.database().ref('Profiles');
             fb2.on('value', snapshot => {
                 let entries = Object.entries(snapshot.val());
-                for(let i=0; i<entries.length; i++){
+                for (let i = 0; i < entries.length; i++) {
                     let result_obj = entries[i][1];
                     result_obj.id = entries[i][0];
                     result_obj.type = "profile";
-                    if(i%2 === 0) {
+                    /*if(i%2 === 0) {
                         result_obj.image = ImageFrederik;
                     } else {
                         result_obj.image = ImageTobias;
-                    }
-                    profiles.push(result_obj);
+                    }*/
+                    profilesArr.push(result_obj);
+
                 }
             });
+            console.log(profilesArr);
+            var profilesFilled = fillInformationIn(profilesArr);
             //TODO: Tobias, lige nu fylder vi infomationer ind i profilesene i fillInfomrationIn. Man bør nok gemme dem i to forskellige arrays i stedet
-            setProfiles(fillInformationIn(profiles));
+            setProfiles(profilesFilled);
             setRecipes(fillInformationIn(recipes));
 
-            let both = recipes.concat(profiles);
+            let both = recipes.concat(profilesArr);
+
+            console.log(both);
             setRecipeProfiles(fillInformationIn(both));
+
+            /*console.log(profiles);
+            console.log(recipes);
+            console.log(recipeProfiles);*/
             console.log('Firebase done');
         }
-        console.log(recipes);
     }
 
     return(
         <Tab.Navigator style={styles.safe} key={someKey}>
-            <Tab.Screen name="Relevant" component={() => <SearchProfilesAndRecipies data={recipeProfiles}/>}/>
-            <Tab.Screen name="Profiler" component={() => <SearchProfiles data={profiles}/>}/>
-            <Tab.Screen name="Opskrifter" component={() => <SearchRecipes data={recipes}/>}/>
+            <Tab.Screen name="Relevant" children={() => <SearchProfilesAndRecipies navigation={navigation} data={recipeProfiles}/>}/>
+            <Tab.Screen name="Profiler" children={() => <SearchProfiles navigation={navigation} data={profiles}/>}/>
+            <Tab.Screen name="Opskrifter" children={() => <SearchRecipes navigation={navigation} data={recipes}/>}/>
         </Tab.Navigator>
     );
 
