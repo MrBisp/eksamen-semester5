@@ -5,15 +5,15 @@
 - [x] Feed
   - [x] Se opskrifter fra dem man følger
   - [x] Gå ind på opskriften man vil gå ind på
-- [ ] Upload opskrift (Jeppe)
-  - [ ] Navn
+- [x] Upload opskrift (Jeppe)
+  - [x] Navn
   - [ ] Billede
-  - [ ] Fremgangsmåde 
-  - [ ] Ingredienser. Skal fremgå i formen: antal - enhed - titel
-  - [ ] Kategori
-  - [ ] Tid
-  - [ ] Dato og tid for oprettelse (ikke synlig)
-  - [ ] Author-id (ikke synlig)
+  - [x] Fremgangsmåde 
+  - [x] Ingredienser. Skal fremgå i formen: antal - enhed - titel
+  - [x] Kategori
+  - [x] Tid
+  - [x] Dato og tid for oprettelse (ikke synlig)
+  - [x] Author-id (ikke synlig)
 - [ ] Søgefunktion (Tobias)
   - [ ] Skal kunne filtrere efter henholdsvis kategori og tid
   - [x] Skal kunne søge efter navn og personer
