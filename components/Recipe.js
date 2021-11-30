@@ -5,7 +5,7 @@ import {LinearGradient} from "expo-linear-gradient";
 const Recipe = (props) => {
     let recipeObj = props.route.params.recipeObj;
     let url = 'https://www.bilkatogo.dk/kurv';
-    //console.log(recipeObj);
+    console.log(recipeObj);
 
     return (
         <View>
