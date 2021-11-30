@@ -5,6 +5,7 @@ import Recipe from "../Recipe";
 import ProfileScreen from "../ProfileScreen";
 import SearchScreen from "../searchComponents/SearchScreen";
 
+
 const StackNavigator = (props) => {
     const Stack = createStackNavigator();
 
