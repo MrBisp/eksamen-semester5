@@ -66,7 +66,6 @@ export default function App() {
             <Tab.Screen name={'Søg'} component={searchStackNavigator} options={{headerShown: false}}/>
             <Tab.Screen name={'Upload opskrift'} component={UploadScreen} options={{headerShown: false}}/>
             <Tab.Screen name={'Min Profil'} component={myProfileStackNavigator} options={{headerShown: false}}/>
-            <Tab.Screen name={'Settings'} component={SettingsScreen} options={{headerShown: false}} />
         </Tab.Navigator>
       </NavigationContainer>
   );
