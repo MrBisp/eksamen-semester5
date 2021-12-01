@@ -41,7 +41,7 @@ const SearchProfilesAndRecipies = (props) => {
         setKategoriArr(tempKategori);
 
         setTidVal(tid);
-    }, [kategori]);
+    }, [kategori, tid]);
 
     //console.log(tidVal);
 

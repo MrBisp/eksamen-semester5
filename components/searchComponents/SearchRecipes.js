@@ -14,7 +14,7 @@ const SearchRecipes = (props) => {
     const data = props.data;
     const [kategori, setKategori] = useState({mexicansk: true, italiensk: true, dansk: true, pizza: true});
     const [kategoriArr, setKategoriArr] = useState([]);
-    const [tid, setTid] = useState([]);
+    const [tid, setTid] = useState(240);
     const [tidVal, setTidVal] = useState(240);
 
     React.useEffect(() => {
@@ -28,7 +28,7 @@ const SearchRecipes = (props) => {
         setKategoriArr(tempKategori);
 
         setTidVal(tid);
-    }, [kategori]);
+    }, [kategori, tid]);
 
     return (
         <SafeAreaView>
@@ -43,6 +43,7 @@ const SearchRecipes = (props) => {
 
                     //Search each recipe, and show them if they are within the search results
                     data.map(item => {
+
                         var show = false;
 
                         if(item.timeSpent <= tidVal && kategoriArr.indexOf(item.category) != -1) {

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import { Pressable, StyleSheet, View, Text, Modal, Button, CheckBox} from 'react-native';
+import { Pressable, StyleSheet, View, Text, Modal, Button} from 'react-native';
+import CheckBox from 'react-native-check-box';
 import FilterElement from "./FilterElement";
 import { Icon } from 'react-native-elements'
 import { Slider } from 'react-native-elements';
@@ -41,9 +42,9 @@ const FilterScreen = (props) => {
                         <Text style={styles.text }>Mexicansk</Text>
                         <CheckBox
                             style={styles.checkbox}
-                            value={kategori.mexicansk}
-                            onValueChange={(value) => {
-                                changeKategori("mexicansk", value);
+                            isChecked={kategori.mexicansk}
+                            onClick={() => {
+                                changeKategori("mexicansk", !kategori.mexicansk);
                             }}
                         />
                     </View>
@@ -51,9 +52,9 @@ const FilterScreen = (props) => {
                         <Text style={styles.text }>Italiensk</Text>
                         <CheckBox
                             style={styles.checkbox}
-                            value={kategori.italiensk}
-                            onValueChange={(value) => {
-                                changeKategori("italiensk", value)
+                            isChecked={kategori.italiensk}
+                            onClick={() => {
+                                changeKategori("italiensk", !kategori.italiensk)
                             }}
                         />
                     </View>
@@ -61,16 +62,16 @@ const FilterScreen = (props) => {
                         <Text style={styles.text }>Dansk</Text>
                         <CheckBox
                             style={styles.checkbox}
-                            value={kategori.dansk}
-                            onValueChange={(value) => {changeKategori("dansk", value)}}
+                            isChecked={kategori.dansk}
+                            onClick={() => {changeKategori("dansk", !kategori.dansk)}}
                         />
                     </View>
                     <View style={styles.row}>
                         <Text style={styles.text }>Pizza</Text>
                         <CheckBox
                             style={styles.checkbox}
-                            value={kategori.pizza}
-                            onValueChange={(value) => {changeKategori("pizza", value)}}
+                            isChecked={kategori.pizza}
+                            onClick={() => {changeKategori("pizza", !kategori.pizza)}}
                         />
                     </View>
                     <Text style={styles.h2}>Tid</Text>
@@ -153,6 +154,8 @@ const styles = StyleSheet.create({
         paddingTop: 140
     },
     checkbox: {
+        height: 10,
+        width: 10,
         position: "absolute",
         right: 0,
         top: 0,
