@@ -59,6 +59,7 @@ const ProfileScreen = (props) => {
             console.log('Satte firebase profile til: ' + profile.name);
         }
 
+        //initiate recipes once
         if(!recipesInitiated) {
             //Find recipes made by author
             let result2 = [];
@@ -69,6 +70,7 @@ const ProfileScreen = (props) => {
                     let result_obj = entries[i][1];
                     result_obj.id = entries[i][0];
                     if(result_obj.hasOwnProperty('authorID')){
+                        //console.log('id: ' + result_obj.id +', authorID: ' + result_obj.authorID + ', frederik: ' + (result_obj.authorID == profile.id).toString())
                         if(result_obj.authorID == profile.id){
                             result2.push(result_obj);
                         }

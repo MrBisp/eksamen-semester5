@@ -18,7 +18,7 @@ const SearchRecipes = (props) => {
     const [tidVal, setTidVal] = useState(240);
 
     React.useEffect(() => {
-        console.log("Tilføj filter - RecipesSite");
+        //console.log("Tilføj filter - RecipesSite");
         let tempKategori = [];
         for (const key in kategori) {
             if(kategori[key]) {

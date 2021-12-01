@@ -31,7 +31,7 @@ const SearchProfilesAndRecipies = (props) => {
     const data = props.data;
 
     React.useEffect(() => {
-        console.log("Tilføj filter - Profiles and Recipe site");
+        //console.log("Tilføj filter - Profiles and Recipe site");
         let tempKategori = [];
         for (const key in kategori) {
             if(kategori[key]) {
@@ -43,7 +43,7 @@ const SearchProfilesAndRecipies = (props) => {
         setTidVal(tid);
     }, [kategori]);
 
-    console.log(tidVal);
+    //console.log(tidVal);
 
     return (
         <SafeAreaView style={styles.safe}>
@@ -58,7 +58,7 @@ const SearchProfilesAndRecipies = (props) => {
 
                     //Search each recipe, and show them if they are within the search results
                     data.map(item => {
-                        console.log(item.timeSpent <= tidVal && kategoriArr.indexOf(item.category) != -1);
+                        //console.log(item.timeSpent <= tidVal && kategoriArr.indexOf(item.category) != -1);
 
                         if(item.type === "recipe") {
                             //Search by title and author name

@@ -101,13 +101,13 @@ const HomeScreen = ({navigation}) => {
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.h1}>Sulten igen, Frederik?</Text>
-            <SafeAreaView key={someKey}>
+            <View key={someKey} style={styles.view}>
                 <FlatList
                     data={recipes}
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
                 />
-            </SafeAreaView>
+            </View>
         </ScrollView>
     );
 }
@@ -121,12 +121,16 @@ export default HomeScreen;
 const styles = StyleSheet.create({
     container: {
         paddingTop:40,
-        paddingBottom: 40
+        paddingBottom: 400,
+        marginBottom: 0,
     },
     h1: {
         fontSize: 42,
         fontWeight: '700',
         paddingLeft: 20
+    },
+    view: {
+        marginBottom: 50
     },
     followText: {
         fontSize: 24,

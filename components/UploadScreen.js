@@ -43,8 +43,8 @@ const UploadScreen = (props, route) => {
         category: '',
         timeSpent: '',
         dateAndTime: '',
-        authorId: '',
-        ingredient: '',
+        authorID: '',
+        ingredients: '',
     };
 
     const [newRecipe, setNewRecipe] = useState(initialState);
@@ -65,15 +65,15 @@ const UploadScreen = (props, route) => {
     }
 
     const saveRecipe = () => {
-        const {recipe, description, timeSpent, category, ingredient} = newRecipe;
+        const {recipe, description, timeSpent, category, ingredients} = newRecipe;
             try {
                 //Get the date and time right now
                 const dateAndTime = new Date().toLocaleString();
-                const authorId = '-Moc2grEfmzBiUp0vSxY';
+                const authorID = '-Moc2grEfmzBiUp0vSxY';
                 //Here we access the database and goes to "Recipes" and creates a new recipe
                 firebase.database()
                     .ref('Recipes')
-                    .push({recipe, description, timeSpent, category, ingredient, dateAndTime, authorId});
+                    .push({recipe, description, timeSpent, category, ingredients: ingredients, dateAndTime, authorID});
                 Alert.alert('Opskrift oprettet');
                 setNewRecipe(initialState)
                 categorySetValue(false)
@@ -98,13 +98,14 @@ const UploadScreen = (props, route) => {
     return(
         //No ScrollView since this ruins the dropdown.
         <SafeAreaView styles={styles.safe}>
+            <View style={styles.space}></View>
             <View style={styles.row}>
                 <Text style={styles.label}>Titel</Text>
-                <TextInput value={newRecipe.recipe}style={styles.input} onChangeText={(event) => changeTextInput('recipe', event)} />
+                <TextInput value={newRecipe.description}style={styles.input} onChangeText={(event) => changeTextInput('description', event)} />
             </View>
             <View style={styles.row}>
                 <Text style={styles.label}>Fremgangsmåde</Text>
-                <TextInput value={newRecipe.description} onChangeText={(event) => changeTextInput('description', event)} style={styles.input} multiline={true}/>
+                <TextInput value={newRecipe.recipe} onChangeText={(event) => changeTextInput('recipe', event)} style={styles.input} multiline={true}/>
             </View>
             <View style={styles.rowDropdown}  zIndex={10}>
                 <Text style={styles.label}>Kategori</Text>
@@ -126,10 +127,10 @@ const UploadScreen = (props, route) => {
             </View>
             <View style={styles.row}>
                 <Text style={styles.label}>Ingredienser</Text>
-                <TextInput value={newRecipe.ingredient} onChangeText={(event) => changeTextInput('ingredient', event)} style={styles.input} multiline={true}/>
+                <TextInput value={newRecipe.ingredients} onChangeText={(event) => changeTextInput('ingredients', event)} style={styles.input} multiline={true}/>
             </View>
             <LinearGradient colors={['#4EB66D', '#1F8E5F']} style={styles.gradientButton} start={{x: 1, y: 0}} end={{x: 0, y: 0}}>
-                <Button style={styles.followButton} color="#ffffff" title={isEditRecipe ? "Gem opskrift" : "Opret opskrift"} onPress={() =>saveRecipe()}  />
+                <Button style={styles.followButton} color="#4EB66D" title={isEditRecipe ? "Gem opskrift" : "Opret opskrift"} onPress={() =>saveRecipe()}  />
             </LinearGradient>
         </SafeAreaView>
     )
@@ -169,7 +170,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     safe: {
-        marginTop: 100
+
+    },
+    space: {
+        marginTop: 70
     },
     row: {
         flexDirection: 'row',

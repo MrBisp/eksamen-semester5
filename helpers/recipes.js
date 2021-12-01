@@ -12,12 +12,13 @@ const DATA = [
         likesTotal: 18578,
         likesPercentage: 92,
         time: 15,
+        timeSpent: '15',
         ingredients: 'Ingredienser',
         recipe: 'Step 1, step 2, step 3',
         author: {
             name: 'Frederik Bisp',
             subTitle: 'Son of a butcher',
-            image: ImageFrederik
+            image: 'https://firebasestorage.googleapis.com/v0/b/recipeat-46ec2.appspot.com/o/frederik%20(1).jpg?alt=media&token=cd1c746a-54ea-4174-9a9e-82ee6ee10c25'
         }
     }
 ];
@@ -30,7 +31,6 @@ export function fillInformationIn(recipes){
         if(recipes[i].hasOwnProperty('description')){
             recipes[i].title = recipes[i].description;
             recipes[i].time = recipes[i].time_Spent;
-            delete recipes[i].recipe;
         }
         if(recipes[i].title == "" || recipes[i].title == undefined){
             recipes[i].title = "Røget laks";
@@ -48,7 +48,7 @@ export function fillInformationIn(recipes){
                 "name": "Tobias Nielsen",
                 "subTitle": "Intet slår en god sovs"
             };
-        } else if (recipes[i].authorID == '-Moc2grEfmzBiUp0vSxY') {
+        } else {
             recipes[i].author = {
                 "image": "https://firebasestorage.googleapis.com/v0/b/recipeat-46ec2.appspot.com/o/frederik%20(1).jpg?alt=media&token=cd1c746a-54ea-4174-9a9e-82ee6ee10c25",
                 "name": "Frederik Bisp",
@@ -59,6 +59,7 @@ export function fillInformationIn(recipes){
         if(recipes[i].image == undefined || recipes[i].image == null){
             recipes[i].image = "https://firebasestorage.googleapis.com/v0/b/recipeat-46ec2.appspot.com/o/pizza-lort-lort.PNG?alt=media&token=67bf63f8-bc78-46ad-9078-ce50d66351c9";
         }
+        //console.log(recipes[i].image)
         result.push({...DATA[0], ...recipes[i]});
     }
     return result;

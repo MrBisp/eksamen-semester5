@@ -22,14 +22,14 @@ const FilterScreen = (props) => {
                 visible={modalVisible}
                 onRequestClose={() => {
                     setModalVisible(!modalVisible);
-                    console.log("onREquestClose");
+                    //console.log("onREquestClose");
                 }}
             >
                 <View style={{position: "relative"}}>
                     <Pressable
                         style={styles.closeButton}
                         onPress={()=>{
-                            console.log("onPressClose");
+                            //console.log("onPressClose");
                             setModalVisible(!modalVisible);
                             props.popUpClosed(kategori, tid);
                         }}
@@ -89,7 +89,7 @@ const FilterScreen = (props) => {
                         <Text style={styles.centerText}> Tid: {tid} minutter </Text>
                     </View>
                     <Pressable onPress={() => {
-                                console.log("OnPressUseFilters");
+                                //console.log("OnPressUseFilters");
                                 setModalVisible(!modalVisible);
                                 props.popUpClosed(kategori, tid);
                                 }}

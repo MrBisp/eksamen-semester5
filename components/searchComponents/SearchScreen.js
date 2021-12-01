@@ -25,7 +25,7 @@ const SearchScreen = ({navigation}) => {
             loadData();
             //This is a bit of a hack. Whenever we have loaded new data, we will set the key to some new value, to force react to rerender the page
             setSomeKey(Math.random());
-            console.log('focus')
+            //console.log('focus')
         });
         return unsubscribe;
     }, [navigation]);
@@ -35,7 +35,7 @@ const SearchScreen = ({navigation}) => {
             let recipes = [];
             let profilesArr = [];
 
-            console.log('firebase starting...');
+            //console.log('firebase starting...');
             const fb = firebase.database().ref('Recipes');
             fb.on('value', snapshot => {
                 let entries = Object.entries(snapshot.val());
@@ -63,7 +63,7 @@ const SearchScreen = ({navigation}) => {
 
                 }
             });
-            console.log(profilesArr);
+            //console.log(profilesArr);
             var profilesFilled = fillInformationIn(profilesArr);
             //TODO: Tobias, lige nu fylder vi infomationer ind i profilesene i fillInfomrationIn. Man bør nok gemme dem i to forskellige arrays i stedet
             setProfiles(profilesFilled);
@@ -71,13 +71,13 @@ const SearchScreen = ({navigation}) => {
 
             let both = recipes.concat(profilesArr);
 
-            console.log(both);
+            //console.log(both);
             setRecipeProfiles(fillInformationIn(both));
 
             /*console.log(profiles);
             console.log(recipes);
             console.log(recipeProfiles);*/
-            console.log('Firebase done');
+            //console.log('Firebase done');
         }
     }
 
