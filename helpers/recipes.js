@@ -18,7 +18,7 @@ const DATA = [
         author: {
             name: 'Frederik Bisp',
             subTitle: 'Son of a butcher',
-            image: 'https://firebasestorage.googleapis.com/v0/b/recipeat-46ec2.appspot.com/o/frederik%20(1).jpg?alt=media&token=cd1c746a-54ea-4174-9a9e-82ee6ee10c25'
+            image: 'https://firebasestorage.googleapis.com/v0/b/recipeat-46ec2.appspot.com/o/bacon%20b%C3%B8nner.jpg?alt=media&token=d8406a8d-8a05-483e-8433-21e73a6c12ee'
         }
     }
 ];

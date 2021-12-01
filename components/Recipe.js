@@ -29,6 +29,7 @@ const Recipe = (props) => {
 
                     <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: 40}}>Fremgangsmåde</Text>
                     <Text>{recipeObj.recipe}</Text>
+                    <Text style={styles.spacer}></Text>
                 </View>
             </ScrollView>
             <View>
@@ -102,4 +103,7 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: '700'
     },
+    spacer: {
+        marginBottom: 25
+    }
 });
