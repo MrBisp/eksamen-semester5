@@ -154,8 +154,9 @@ const styles = StyleSheet.create({
         paddingTop: 140
     },
     checkbox: {
-        height: 10,
-        width: 10,
+        height: 50,
+        width: 50,
+        marginRight: 10,
         position: "absolute",
         right: 0,
         top: 0,
