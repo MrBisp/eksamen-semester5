@@ -12,7 +12,7 @@ const DATA = [
         likesTotal: 18578,
         likesPercentage: 92,
         time: 15,
-        timeSpent: '15',
+        timeSpent: 15,
         ingredients: 'Ingredienser',
         recipe: 'Step 1, step 2, step 3',
         author: {
