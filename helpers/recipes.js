@@ -18,7 +18,7 @@ const DATA = [
         author: {
             name: 'Frederik Bisp',
             subTitle: 'Son of a butcher',
-            image: 'https://firebasestorage.googleapis.com/v0/b/recipeat-46ec2.appspot.com/o/bacon%20b%C3%B8nner.jpg?alt=media&token=d8406a8d-8a05-483e-8433-21e73a6c12ee'
+            image: 'https://firebasestorage.googleapis.com/v0/b/recipeat-46ec2.appspot.com/o/frederik%20(1).jpg?alt=media&token=cd1c746a-54ea-4174-9a9e-82ee6ee10c25'
         }
     }
 ];
@@ -57,7 +57,7 @@ export function fillInformationIn(recipes){
         }
 
         if(recipes[i].image == undefined || recipes[i].image == null){
-            recipes[i].image = "https://firebasestorage.googleapis.com/v0/b/recipeat-46ec2.appspot.com/o/pizza-lort-lort.PNG?alt=media&token=67bf63f8-bc78-46ad-9078-ce50d66351c9";
+            recipes[i].image = "https://firebasestorage.googleapis.com/v0/b/recipeat-46ec2.appspot.com/o/bacon%20b%C3%B8nner.jpg?alt=media&token=d8406a8d-8a05-483e-8433-21e73a6c12ee";
         }
         //console.log(recipes[i].image)
         result.push({...DATA[0], ...recipes[i]});
